@@ -1,0 +1,4 @@
+FROM openjdk:17-oracle
+COPY ./target/*.jar ticket-selling.jar
+RUN sh -c 'touch changeinfo.jar'
+ENTRYPOINT ["java","-jar","ticket-selling.jar"]

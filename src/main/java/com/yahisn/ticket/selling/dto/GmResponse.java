@@ -9,7 +9,7 @@ public class GmResponse {
 	@JsonProperty("GM_HEADER")
 	private GmHeader gmHeader;
 
-	@JsonProperty("GM_TRNRS")
+	@JsonProperty("GM_TRANRS")
 	private GmTranrs gmTranrs;
 
 	public GmHeader getGmHeader() {
@@ -20,17 +20,17 @@ public class GmResponse {
 		this.gmHeader = gmHeader;
 	}
 
-	public GmTranrs getGmTrans() {
+	public GmTranrs getGmTranrs() {
 		return gmTranrs;
 	}
 
-	public void setGmTrans(GmTranrs gmTrans) {
-		this.gmTranrs = gmTrans;
+	public void setGmTranrs(GmTranrs gmTranrs) {
+		this.gmTranrs = gmTranrs;
 	}
 
 	@Override
 	public String toString() {
-		return "GmResponse [gmHeader=" + gmHeader + ", gmTrans=" + gmTranrs + "]";
+		return "GmResponse [gmHeader=" + gmHeader + ", gmTranrs=" + gmTranrs + "]";
 	}
 	
 }

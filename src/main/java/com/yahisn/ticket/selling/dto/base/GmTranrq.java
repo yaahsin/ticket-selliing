@@ -1,9 +1,8 @@
 package com.yahisn.ticket.selling.dto.base;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 public class GmTranrq {
 	
@@ -12,8 +11,7 @@ public class GmTranrq {
 	private String eventId;
 	
 	@JsonProperty("AMOUNT")
-	@NotEmpty(message = "Avaliable for 1 ~ 2 tickets")
-	@Max(2)
+	@NotNull
 	private Integer amount;
 
 	public String getEventId() {

@@ -18,14 +18,12 @@ public class TicketServiceImpl implements TicketService {
 	@Autowired
 	RedisTemplate<String, String> redisTemplate;
 
-	Integer count = 0;
-
 	private Logger logger = LoggerFactory.getLogger(getClass());
 
 	@Override
 	public GmResponse snapTicket(GmRequest request) {
-		String eventId = request.getGmTranrq().getEventId();
-		Integer amount = request.getGmTranrq().getAmount();
+		String eventId = request.getTranrq().getEventId();
+		Integer amount = request.getTranrq().getAmount();
 		GmResponse gmResponse = new GmResponse();
 		GmHeader gmHeader = new GmHeader();
 		GmTranrs gmTranrs = new GmTranrs();
@@ -36,11 +34,12 @@ public class TicketServiceImpl implements TicketService {
 				redisTemplate.opsForValue().set(eventId, String.valueOf(amount));
 			}
 
-			count += amount;
-
+			String count = redisTemplate.opsForValue().get(eventId);
+			
 			gmHeader.setReturnCode("0000");
 			gmHeader.setReturnDesc("交易成功");
 			gmTranrs.setTicketInfo("EventId: " + eventId + " /Amount: " + amount + " /Number: " + count);
+			logger.info("[SUCESS] --> " + "Request: " + request);
 
 		} catch (Exception ex) {
 			gmHeader.setReturnCode("1111");
@@ -51,7 +50,7 @@ public class TicketServiceImpl implements TicketService {
 
 		}
 		gmResponse.setGmHeader(gmHeader);
-		gmResponse.setGmTrans(gmTranrs);
+		gmResponse.setGmTranrs(gmTranrs);
 
 		return gmResponse;
 

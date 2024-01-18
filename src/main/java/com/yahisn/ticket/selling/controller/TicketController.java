@@ -19,8 +19,6 @@ public class TicketController {
 	@Autowired
 	TicketService ticketService;
 
-//	Logger logger = LoggerFactory.getLogger(this.getClass());
-
 	@PostMapping("/snap-ticket")
 	public GmResponse buyTicket(@RequestBody @Valid GmRequest gmRequest, BindingResult bindingResult) throws Exception {
 		if(bindingResult.hasErrors()) throw new RequestInvalidException(bindingResult);

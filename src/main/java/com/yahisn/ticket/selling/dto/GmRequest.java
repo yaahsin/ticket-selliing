@@ -1,19 +1,21 @@
 package com.yahisn.ticket.selling.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.yahisn.ticket.selling.dto.base.GmHeader;
 import com.yahisn.ticket.selling.dto.base.GmTranrq;
 
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class GmRequest {
 
 	@JsonProperty("GM_HEADER")
-	@NotEmpty
+	@NotNull
 	private GmHeader gmHeader;
 
 	@JsonProperty("GM_TRNRQ")
-	@NotEmpty
+	@NotNull
 	private GmTranrq gmTranrq;
 
 	public GmHeader getGmHeader() {
@@ -24,17 +26,17 @@ public class GmRequest {
 		this.gmHeader = gmHeader;
 	}
 
-	public GmTranrq getGmTranrq() {
+	public GmTranrq getTranrq() {
 		return gmTranrq;
 	}
 
-	public void setGmTranrq(GmTranrq gmTranrq) {
+	public void setTranrq(GmTranrq gmTranrq) {
 		this.gmTranrq = gmTranrq;
 	}
 
 	@Override
 	public String toString() {
-		return "GmRequest [gmHeader=" + gmHeader + ", gmTranrq=" + gmTranrq + "]";
+		return "GmRequest [gmHeader=" + gmHeader + ", GmTranrq=" + gmTranrq + "]";
 	}
-	
+
 }
